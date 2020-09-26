@@ -3,6 +3,11 @@
 <head>
  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 		<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
+		<script src="https://cdn.bootcss.com/marked/0.3.6/marked.min.js"></script>
+		<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/railscasts.min.css">
+		<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
 		<style>
 			body {
 				font-family: Monospace;
@@ -20,12 +25,13 @@
 		</style>
 	</head>
 	<body>
-		  <div id="content"></div>
-		  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
-		  <script>
-		    document.getElementById('content').innerHTML =
-		      marked('# Marked in the browser\n\nRendered by **marked**.');
-		  </script>
+		 <div id="content" style="font-size: 18px;"></div>
+		 <script>
+		 hljs.initHighlightingOnLoad();
+		 $(document).ready(function () {
+		 $("#content").html(marked({$html}));
+		 })
+		 </script>
 		<div class="div">
 		<p>
 			
