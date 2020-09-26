@@ -2,10 +2,52 @@
 <html lang="zh-CN">
 <head>
  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-		
+		<script type="text/javascript" src="showdown.js"></script>
 	</head>
+	<style>
+		body {
+		    font-family: "Helvetica Neue", Helvetica, Microsoft Yahei, Hiragino Sans GB, WenQuanYi Micro Hei, sans-serif;
+		   font-size: 16px;
+		    line-height: 1.42857143;
+		    color: #333;
+		    background-color: #fff;
+		  }
+		  ul li {
+		    line-height: 24px;
+		  }
+		  blockquote {
+		    border-left:#eee solid 5px;
+		    padding-left:20px;
+		  }
+		  code {
+		    color:#D34B62;
+		    background: #F9F2F4;
+	
+	</style>
 	<body>
 		
+		    <div>
+		        <textarea id="content" style="height:300px;width:500px;" onkeyup="compile()"></textarea>
+		        <div id="result"></div>
+		    </div>
+		    <script type="text/javascript">
+		        function compile () {
+		            vr text = document.getElementById("content").value;
+		            var converter = new showdown.Converter();
+		            //支持显示如同github的勾选框，默认false
+		            //ep: - [x] This task is done
+		            converter.setOption("tasklists", true);
+		            //支持显示table，默认false
+		            converter.setOption("tables", true);
+		            //支持图片大小设置，默认为false
+		            converter.setOption("parseImgDimensions", true);
+		            /**
+		            **更多地请看https://github.com/showdownjs/showdown文档
+		            **/
+		           var html = converter.makeHtml(text);
+		            document.getElementById("result").innerHTML = html;
+		        }
+		    </script>
 
 	</body>
 
